@@ -2239,7 +2239,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .timeline__bullet {
-    background: #c4abe9;
+    background: #4874ba;
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
@@ -2263,8 +2263,6 @@ html.no-csstransitions .home-content__main {
 .timeline__header h3 {
     line-height: 1.25;
     margin: 0 0 .3rem 0;
-   
-
 }
 
 
