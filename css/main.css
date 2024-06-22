@@ -1765,7 +1765,18 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     padding-bottom: 19.2rem;
     position: relative;
 }
-
+.home-content__buttons {
+    position: absolute;
+    right: 0;
+    bottom: 2.1rem;
+    text-align: center;
+}
+.home-content__main {
+    position: absolute;
+    right: 3.7rem;
+    bottom: 7rem;
+    text-align: right;
+}
 .home-content h3 {
     font-family: "montserrat-bold", sans-serif;
     font-size: 2.5rem;
@@ -1798,17 +1809,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     margin-top: 0;
 }
 
-.home-content__main {
-    padding-right: 300px;
-    position: relative;
-}
 
-.home-content__buttons {
-    position: absolute;
-    right: 0;
-    bottom: 2.1rem;
-    text-align: center;
-}
 
 .home-content__buttons .btn {
     display: block;
