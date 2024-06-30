@@ -68,6 +68,9 @@
  *
  * ------------------------------------------------------------------- */
 
+:root{
+    blue-color: #385AAD;
+}
 html {
     font-size: 10px;
 }
@@ -98,7 +101,7 @@ body {
  * ------------------------------------------------------------------- */
 
 a {
-    color: #862121;
+    color: var(--blue-color);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -377,7 +380,7 @@ ul.disc li::before {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #862121;
+    background: var(--blue-color);
     position: absolute;
     left: -17px;
     top: 11px;
@@ -386,7 +389,7 @@ ul.disc li::before {
 
 dt {
     margin: 0;
-    color: #862121;
+    color: var(--blue-color);
 }
 
 dd {
@@ -517,7 +520,7 @@ form,
 }
 
 .pace .pace-progress {
-    background: #862121;
+    background: var(--blue-color);
     position: fixed;
     z-index: 900;
     top: 0;
@@ -562,7 +565,7 @@ form,
     margin-left: -30px;
     margin-top: -30px;
     padding: 0;
-    background-color: #862121;
+    background-color: var(--blue-color);
     border-radius: 100%;
     -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
     animation: sk-scaleout 1.0s infinite ease-in-out;
@@ -801,9 +804,8 @@ input[type="button"]:hover,
 input[type="submit"]:focus, 
 input[type="reset"]:focus, 
 input[type="button"]:focus {
-    background-color: #b8b8b8;
-    border-color: #b8b8b8;
-    color: #000000;
+    background-color: #ff6163;
+    border-color: #ff6464;
     outline: 0;
 }
 
@@ -816,9 +818,9 @@ button.btn--primary,
 input[type="submit"].btn--primary, 
 input[type="reset"].btn--primary, 
 input[type="button"].btn--primary {
-    background: #0D0A0B;
+    background: --var(blue-color);
     border-color: #0D0A0B;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .btn.btn--primary:hover, 
@@ -831,8 +833,8 @@ button.btn--primary:focus,
 input[type="submit"].btn--primary:focus, 
 input[type="reset"].btn--primary:focus, 
 input[type="button"].btn--primary:focus {
-    background: #862121;
-    border-color: #862121;
+    background: var(--blue-color);
+    border-color: var(--blue-color);
 }
 
 
@@ -861,8 +863,8 @@ input[type="button"].btn--primary:focus {
 }
 
 .btn--stroke:hover, button.btn--stroke:hover {
-    border: 0.3rem solid #862121;
-    color: #862121;
+    border: 0.3rem solid var(--blue-color);
+    color: var(--blue-color);
 }
 
 .btn--pill, button.btn--pill {
@@ -1088,7 +1090,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .stats-tabs li a:hover {
-    color: #862121;
+    color: var(--blue-color);
 }
 
 .stats-tabs li a em {
@@ -1381,11 +1383,11 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .blog-list .blog-date {
     font-family: "montserrat-regular", sans-serif;
     font-size: 1.5rem;
-    color: #862121;
+    color: var(--blue-color);
 }
 
 .blog-list .blog-date a {
-    color: #862121;
+    color: var(--blue-color);
 }
 
 .blog-list .blog-date a:hover, 
@@ -1410,7 +1412,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .blog-list .blog-cat a:hover, 
 .blog-list .blog-cat a:focus, 
 .blog-list .blog-cat a:active {
-    color: #862121;
+    color: var(--blue-color);
 }
 
 .blog-list .blog-cat a::after {
@@ -1803,7 +1805,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 .home-content h1 {
     font-family: "Orbitron", serif;
-    color: #d7c7f0;
+    color: #ffffff;
     font-size: 6rem;
     line-height: 1.35;
     margin-top: 0;
@@ -3091,7 +3093,7 @@ html.no-csstransitions .home-content__main {
     padding: 0 2rem;
     margin: 0;
     color: #FFFFFF;
-    background: #862121;
+    background: var(--blue-color);
 }
 
 .s-contact .form-field label::after {
@@ -3102,7 +3104,7 @@ html.no-csstransitions .home-content__main {
     margin-top: -6px;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solid #862121;
+    border-right: 5px solid var(--blue-color);
 }
 
 .contact__main {
@@ -3146,8 +3148,8 @@ html.no-csstransitions .home-content__main {
 
 .contact__form button {
     margin-top: 4.2rem;
-    background-color: #862121;
-    border-color: #862121;
+    background-color: var(--blue-color);
+    border-color: var(--blue-color);
 }
 
 .message-warning, .message-success {
@@ -3307,7 +3309,7 @@ footer {
 }
 
 footer a, footer a:visited {
-    color: #862121;
+    color: var(--blue-color);
 }
 
 footer a:hover, footer a:focus {
