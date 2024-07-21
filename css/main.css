@@ -1807,12 +1807,42 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     top: 50%;
 }
 
-.home-content h1 {
-    font-family: "Orbitron", serif;
-    color: #ffffff;
-    font-size: 6rem;
+.home-content h1, .home-content h2 {
+    font-family: "Orbitron", sans-serif;
+    color: var(--ivory-color); 
     line-height: 1.35;
     margin-top: 0;
+    text-shadow: 
+      4px 4px 0 var(--teal-color), 
+      -4px -4px 0 var(--rust-color), 
+      0 0 20px var(--yellow-color); 
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    animation: retro 2s infinite alternate;
+}
+
+.home-content h1 {
+    font-size: 6.8rem
+}
+  
+.home-content h2 {
+    font-size: 4.8rem;
+}
+
+@keyframes retro {
+0% {
+    text-shadow: 
+    4px 4px 0 var(--teal-color),
+    -4px -4px 0 var(--rust-color),
+    0 0 20px var(--yellow-color);
+}
+100% {
+    text-shadow: 
+    4px 4px 0 var(--rust-color),
+    -4px -4px 0 var(--teal-color),
+    0 0 30px var(--yellow-color);
+}
 }
 
 
