@@ -1801,7 +1801,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     content: "";
     width: 60px;
     height: 2px;
-    background-color: #5f7cff;
     margin-top: -1.5px;
     position: absolute;
     left: 0;
