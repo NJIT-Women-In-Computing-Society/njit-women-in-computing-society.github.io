@@ -818,6 +818,30 @@ input[type="button"]:focus {
     outline: 0;
 }
 
+@media screen and (max-width: 1200px) {
+    .btn, button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+        font-size: 1rem;
+        height: 5rem;
+        line-height: calc(5rem - .6rem);
+        padding: 0 2.5rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .btn, button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+        font-size: .8rem;
+        height: 4.2rem;
+        line-height: calc(4.2rem - .6rem);
+        padding: 0 1.8rem;
+        letter-spacing: .2rem;
+    }
+}
 
 /* button primary
  * ------------------------------------------------- */
