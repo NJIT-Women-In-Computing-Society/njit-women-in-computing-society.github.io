@@ -781,14 +781,14 @@ input[type="reset"],
 input[type="button"] {
     display: inline-block;
     font-family: "montserrat-semibold", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: .3rem;
     height: 5.4rem;
     line-height: calc(5.4rem - .6rem);
     padding: 0 3rem;
     margin: 0 .3rem 1.2rem 0;
-    color: #000000;
+    color: var(--navy-color);
     text-decoration: none;
     cursor: pointer;
     text-align: center;
@@ -796,8 +796,12 @@ input[type="button"] {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: var(--yellow-color);
-    border: .3rem solid #ffffff;
-    border-radius: 15%
+    border: .3rem solid var(--ivory-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px var(--yellow-color), /* Golden glow */
+    inset 0 0 10px var(--yellow-color);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover, 
@@ -810,7 +814,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus, 
 input[type="button"]:focus {
     background-color: var(rust-color);
-    border-color: #ff6464;
+    border-color: var(--rust-color);
     outline: 0;
 }
 
