@@ -2311,7 +2311,25 @@ html.no-csstransitions .home-content__main {
     min-height: 25.8rem;
 }
 
-.timeline__bullet {
+@keyframes colorChange {
+    0% {
+      background: var(--teal-color);
+    }
+    25% {
+      background: var(--red-color);
+    }
+    50% {
+      background: var(--blue-color);
+    }
+    75% {
+      background: var(--yellow-color);
+    }
+    100% {
+      background: var(--teal-color);
+    }
+  }
+  
+  .timeline__bullet {
     background: var(--teal-color);
     height: 1.5rem;
     width: 1.5rem;
@@ -2321,7 +2339,10 @@ html.no-csstransitions .home-content__main {
     position: absolute;
     left: 2rem;
     top: .3rem;
-}
+    animation: colorChange 5s infinite; /* Adjust the duration as needed */
+  }
+  
+
 
 .timeline__header .timeline__timeframe {
     font-size: 1.4rem;
