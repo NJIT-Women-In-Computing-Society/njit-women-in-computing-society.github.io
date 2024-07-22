@@ -197,7 +197,16 @@
 
     };
 
-
+    var ssRandomColorBullets = function() {
+        $(document).ready(function() {
+            $('.timeline__bullet').each(function() {
+                var $bullet = $(this);
+                var randomDelay = Math.random() * 5; // Random delay between 0 and 5 seconds
+                $bullet.css('animation-delay', randomDelay + 's');
+            });
+        });
+    };
+    
     /* slick slider
      * ------------------------------------------------------ */
     var ssSlickSlider = function() {
@@ -427,6 +436,7 @@
         ssAlertBoxes();
         ssContactForm();
         ssBackToTop();
+        ssRandomColorBullets();
 
     })();
 
