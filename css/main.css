@@ -169,6 +169,11 @@ p.lead {
     color: var(--ivory-color);
 }
 
+p.sp {
+    display: inline-block;
+    font-family: "montserrat-semibold", sans-serif;
+}
+
 @media only screen and (max-width: 800px) {
     p.lead {
         font-size: 1.8rem;
@@ -775,6 +780,7 @@ input[type="button"]:focus {
     border-color: var(--rust-color);
     outline: 0;
 }
+
 
 @media screen and (max-width: 1200px) {
     .btn, button,
