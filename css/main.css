@@ -1,56 +1,4 @@
-/* =================================================================== 
- *
- *  
- *
- ***** https://www.color-hex.com/color/9d74db     ******
 
- *  TOC:
- *  # webfonts and iconfonts
- *  # base style overrides
- *      ## links
- *  # typography & general theme styles
- *      ## lists
- *      ## responsive video container
- *      ## floated image
- *      ## tables
- *      ## spacing
- *      ## pace.js styles - minimal
- *  # forms
- *      ## style placeholder text
- *      ## Change Autocomplete styles in Chrome
- *  # buttons
- *  # additional components
- *      ## alert box
- *      ## additional typo styles
- *      ## skillbars
- *  # common and reusable theme styles 
- *      ## section intro
- *      ## blog-list
- *  # header styles
- *      ## header logo
- *      ## mobile menu toggle
- *      ## navigation
- *  # home
- *      ## home content
- *      ## home social
- *      ## home animations
- *  # about
- *      ## timeline
- *  # works
- *      ## bricks/masonry
- *  # testimonials
- *  # blog
- *  # cta
- *  # stats
- *  # contact
- *  # footer
- *      ## go to top
- *  # blog styles
- *      ## blog page header
- *      ## blog content
- *      ## comments
- *
- * =================================================================== */
 
 
 /* ===================================================================
@@ -106,7 +54,7 @@ body {
  * ------------------------------------------------------------------- */
 
 a {
-    color: var(--teal-color);
+    color: var(--yellow-color);
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -134,9 +82,14 @@ h1, h2, h3, h4, h5, h6, .h01, .h02, .h03, .h04, .h05, .h06 {
     text-rendering: optimizeLegibility;
 }
 
-h1, .h01, h2, .h02, h3, .h03, h4, .h04 {
+h1, .h01, h2, .h02 {
     margin-top: 6rem;
     margin-bottom: 1.8rem;
+    color: var(--ivory-color);
+    text-shadow: 
+    4px 4px 0 var(--teal-color), 
+    -4px -4px 0 var(--rust-color), 
+    0 0 20px var(--yellow-color); 
 }
 
 @media only screen and (max-width: 600px) {
@@ -162,6 +115,11 @@ h1, .h01 {
     font-size: 3.6rem;
     line-height: 1.25;
     letter-spacing: -.1rem;
+    color: var(--ivory-color);
+    text-shadow: 
+    4px 4px 0 var(--teal-color), 
+    -4px -4px 0 var(--rust-color), 
+    0 0 20px var(--yellow-color); 
 }
 
 @media only screen and (max-width: 600px) {
@@ -208,7 +166,7 @@ p.lead {
     font-size: 2rem;
     line-height: 1.8;
     margin-bottom: 3.6rem;
-    color: #0D0A0B;
+    color: var(--ivory-color);
 }
 
 @media only screen and (max-width: 800px) {
@@ -2307,9 +2265,11 @@ html.no-csstransitions .home-content__main {
 .s-about {
     padding-top: 15rem;
     padding-bottom: 9rem;
-    background-color: #FFFFFF;
+    background-color: var(--navy-color);
     position: relative;
 }
+
+
 
 .about-content {
     margin-bottom: 3rem;
@@ -2357,7 +2317,7 @@ html.no-csstransitions .home-content__main {
     width: 1.5rem;
     border-radius: 50%;
     margin-left: -0.75rem;
-    box-shadow: 0 0 0 9px #E9E9E9;
+    box-shadow: 0 0 5px 7px #f7ffc0;
     position: absolute;
     left: 2rem;
     top: .3rem;
@@ -2972,11 +2932,16 @@ html.no-csstransitions .home-content__main {
 .s-blog {
     padding-top: 15rem;
     padding-bottom: 9.6rem;
-    background-color: #FFFFFF;
+    background-color: var(--navy-color);
     position: relative;
 }
+ .s-blog h3{
+    color: var(--ivory-color);
+ }
 
-
+ .s-blog p{
+    color:white;
+ }
 
 /* ===================================================================
  * # cta - (_site-layout.scss)
@@ -2987,7 +2952,7 @@ html.no-csstransitions .home-content__main {
     margin-top: -9rem;
     padding-top: 0;
     padding-bottom: 9rem;
-    background-color: #FFFFFF;
+    background-color: var(--navy-color);
     position: relative;
     z-index: 1;
 }
