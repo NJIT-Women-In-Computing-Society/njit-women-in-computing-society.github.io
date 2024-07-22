@@ -750,7 +750,7 @@ input[type="button"] {
     height: 5.4rem;
     line-height: calc(5.4rem - .6rem);
     padding: 0 3rem;
-    margin: 0 .3rem 1.2rem 0;
+    margin: .2rem .3rem 1.2rem 0;
     color: var(--navy-color);
     text-decoration: none;
     cursor: pointer;
@@ -782,7 +782,7 @@ input[type="button"]:focus {
 }
 
 
-@media screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
     .btn, button,
     input[type="submit"],
     input[type="reset"],
@@ -791,10 +791,11 @@ input[type="button"]:focus {
         height: 5rem;
         line-height: calc(5rem - .6rem);
         padding: 0 2.5rem;
+        margin-top: .2rem;
     }
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     .btn, button,
     input[type="submit"],
     input[type="reset"],
@@ -804,6 +805,7 @@ input[type="button"]:focus {
         line-height: calc(4.2rem - .6rem);
         padding: 0 1.8rem;
         letter-spacing: .2rem;
+        margin-top: .2rem;
     }
 }
 
