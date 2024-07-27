@@ -60,7 +60,7 @@ a {
 }
 
 a:hover, a:focus, a:active {
-    color: #191A3F;
+    color: var(--rust-color);
 }
 
 a:focus {
