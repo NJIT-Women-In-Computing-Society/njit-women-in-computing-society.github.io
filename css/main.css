@@ -172,6 +172,8 @@ p.lead {
 p.sp {
     display: inline-block;
     font-family: "montserrat-semibold", sans-serif;
+    color: var(--ivory-color);
+    font-size: 2rem;
 }
 
 @media only screen and (max-width: 800px) {
