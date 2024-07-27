@@ -172,6 +172,8 @@ p.lead {
 p.sp {
     display: inline-block;
     font-family: "montserrat-semibold", sans-serif;
+    color: var(--ivory-color);
+    font-size: 2rem;
 }
 
 @media only screen and (max-width: 800px) {
@@ -2648,9 +2650,66 @@ html.no-csstransitions .home-content__main {
 
 /* #id & Sponsors css */
 
-.img-responsive{
-    height: 50%;
-    width: 50%;
+#sponsors {
+    padding: 80px 0; 
+    background-color: var(--teal-color);
+}
+
+.sponsor-logos {
+    margin: 0 auto; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 45px; 
+}
+
+.sponsor-logos a {
+    flex: 1 1 calc(33.333% - 30px); 
+    max-width: calc(33.333% - 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.sponsor-logos img {
+    max-height: 200px; 
+    width: auto; 
+    transition: transform 0.2s;
+    object-fit: contain;
+}
+
+.sponsor-logos img:hover {
+    transform: scale(1.1);
+}
+
+.sponsor-btn {
+    display: inline-block;
+    margin-top: 20px; 
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+/* Media query for responsive design */
+@media screen and (max-width: 768px) {
+    .sponsor-logos {
+        gap: 20px; 
+    }
+    
+    .sponsor-logos a {
+        flex: 1 1 calc(50% - 20px); 
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sponsor-logos a {
+        flex: 1 1 100%; 
+        max-width: 100%;
+    }
 }
 
 /* ------------------------------------------------------------------- 
