@@ -651,43 +651,38 @@ textarea, select {
 .timeline__time {
     font-size: 1.2em;
     font-weight: bold;
-    color: var(--yellow-color); /* Change this to the color you want for the time */
+    color: var(--yellow-color); 
     margin-bottom: 10px;
     font-family: "Orbitron", sans-serif;
 }
 
-/* Style for paragraph inside timeline */
 .timeline__desc p {
     font-family: "Orbitron", sans-serif;
     font-size: 1em;
-    color: #4a4a4a; /* Change this to the color you want for the paragraph */
+    color: #4a4a4a; 
     line-height: 1.6;
     margin-top: 5px;
 }
 
-/* Ensure consistent spacing between timeline blocks */
 .timeline__block {
-    margin-bottom: 30px; /* Adjust the spacing between each timeline block */
+    margin-bottom: 30px; 
     padding-bottom: 10px;
-    border-bottom: 1px solid #e0e0e0; /* Optional: adds a line between items for clarity */
+    border-bottom: 1px solid #e0e0e0; 
 }
 
 /* Ensure consistent spacing for timeline headers */
 .timeline__header {
-    margin-bottom: 10px; /* Space between header and description */
+    margin-bottom: 10px;
 }
 
-/* Ensure consistent spacing for the description paragraphs */
 .timeline__desc {
-    margin-bottom: 10px; /* Space below the description */
+    margin-bottom: 10px; 
 }
 
-/* Optional: Adjust spacing for the timeline__time */
 .timeline__time {
-    margin-bottom: 10px; /* Space below the time element */
+    margin-bottom: 10px; 
 }
 
-/* IE9 and below */
 
 .oldie .ss-custom-select::after {
     display: none;
