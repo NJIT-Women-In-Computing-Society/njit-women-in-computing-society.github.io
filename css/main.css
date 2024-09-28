@@ -647,6 +647,7 @@ textarea, select {
     transition: all 0.15s ease-in-out;
 }
 
+
 .timeline__time {
     font-size: 1.2em;
     font-weight: bold;
