@@ -647,6 +647,44 @@ textarea, select {
     transition: all 0.15s ease-in-out;
 }
 
+.timeline__time {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--yellow-color); /* Change this to the color you want for the time */
+    margin-bottom: 10px;
+    font-family: "Orbitron", sans-serif;
+}
+
+/* Style for paragraph inside timeline */
+.timeline__desc p {
+    font-family: "Orbitron", sans-serif;
+    font-size: 1em;
+    color: #4a4a4a; /* Change this to the color you want for the paragraph */
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+/* Ensure consistent spacing between timeline blocks */
+.timeline__block {
+    margin-bottom: 30px; /* Adjust the spacing between each timeline block */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Optional: adds a line between items for clarity */
+}
+
+/* Ensure consistent spacing for timeline headers */
+.timeline__header {
+    margin-bottom: 10px; /* Space between header and description */
+}
+
+/* Ensure consistent spacing for the description paragraphs */
+.timeline__desc {
+    margin-bottom: 10px; /* Space below the description */
+}
+
+/* Optional: Adjust spacing for the timeline__time */
+.timeline__time {
+    margin-bottom: 10px; /* Space below the time element */
+}
 
 /* IE9 and below */
 
