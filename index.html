@@ -885,7 +885,15 @@
       --shelf-label: #ffe0b8;
       --plaque-border: rgba(196, 150, 90, 0.55);
       --plaque-glow: rgba(196, 150, 90, 0.28);
-      --logo-size: 132px;
+      --logo-size: 250px;
+      --logo-height: 100px;
+      padding: 20px 56px 0;
+    }
+
+    .terrarium-shelf--ironwood .terrarium-shelf-items {
+      align-items: center;
+      gap: 48px 72px;
+      padding-bottom: 18px;
     }
 
     .terrarium-shelf--birch {
@@ -894,7 +902,15 @@
       --shelf-label: #eef4fa;
       --plaque-border: rgba(186, 121, 214, 0.5);
       --plaque-glow: rgba(200, 214, 230, 0.3);
-      --logo-size: 220px;
+      --logo-size: 250px;
+      --logo-height: 100px;
+      padding: 20px 56px 0;
+    }
+
+    .terrarium-shelf--birch .terrarium-shelf-items {
+      align-items: center;
+      gap: 48px 72px;
+      padding-bottom: 18px;
     }
 
     .terrarium-shelf--inkind {
@@ -903,7 +919,7 @@
       --shelf-label: #f0e0f8;
       --plaque-border: rgba(186, 121, 214, 0.45);
       --plaque-glow: rgba(186, 121, 214, 0.28);
-      --logo-size: 140px;
+      --logo-size: 115px;
     }
 
     /* Ornate wood-carved / whimsical plaque for tier titles */
@@ -1034,6 +1050,7 @@
 
     .terrarium-shelf--redwood .sponsor-cloche-logo { animation-duration: 4s; animation-delay: -0.8s; }
     .terrarium-shelf--ironwood .sponsor-cloche-logo { animation-duration: 4.2s; animation-delay: -1.4s; }
+    .terrarium-shelf--ironwood .sponsor-cloche:nth-child(2) .sponsor-cloche-logo { animation-delay: -2s; }
     .terrarium-shelf--birch .sponsor-cloche-logo { animation-duration: 3.8s; animation-delay: -0.4s; }
     .terrarium-shelf--birch .sponsor-cloche:nth-child(2) .sponsor-cloche-logo { animation-delay: -1.8s; }
     .terrarium-shelf--inkind .sponsor-cloche-logo { animation-duration: 4s; animation-delay: -1s; }
@@ -1115,15 +1132,29 @@
       }
 
       .terrarium-shelf--ironwood {
-        --logo-size: 100px;
+        --logo-size: 185px;
+        --logo-height: 74px;
+        padding: 16px 24px 0;
+      }
+
+      .terrarium-shelf--ironwood .terrarium-shelf-items {
+        gap: 32px 44px;
+        padding-bottom: 14px;
       }
 
       .terrarium-shelf--birch {
-        --logo-size: 156px;
+        --logo-size: 185px;
+        --logo-height: 74px;
+        padding: 16px 24px 0;
+      }
+
+      .terrarium-shelf--birch .terrarium-shelf-items {
+        gap: 32px 44px;
+        padding-bottom: 14px;
       }
 
       .terrarium-shelf--inkind {
-        --logo-size: 110px;
+        --logo-size: 90px;
       }
 
       .terrarium-shelf-items {
@@ -2095,6 +2126,12 @@
             <a class="sponsor-cloche is-dark-logo" href="https://www.fiserv.com/en.html" target="_blank" rel="noopener noreferrer" aria-label="Fiserv, Ironwood sponsor">
               <div class="sponsor-cloche-logo">
                 <img src="assets/Fiserv.png" alt="Fiserv" />
+              </div>
+            </a>
+
+            <a class="sponsor-cloche sponsor-cloche--judi" href="https://www.judi.health/" target="_blank" rel="noopener noreferrer" aria-label="Judi Health, Ironwood sponsor">
+              <div class="sponsor-cloche-logo">
+                <img src="assets/Judi-Health_Gradient.png" alt="Judi Health" />
               </div>
             </a>
           </div>
