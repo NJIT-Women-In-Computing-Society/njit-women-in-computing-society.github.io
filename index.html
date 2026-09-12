@@ -553,53 +553,82 @@
       overflow: hidden;
     }
 
-
     .tracks-carousel {
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      overflow: hidden;
+      --track-gap: 28px;
+      --track-card-w: 300px;
+      --tracks-visible: 3;
+      position: relative;
+      z-index: 2;
+      width: min(100%, calc(var(--tracks-visible) * var(--track-card-w) + (var(--tracks-visible) - 1) * var(--track-gap) + 120px));
+      margin: 0 auto;
       padding: 10px 0 30px;
-      mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 8%,
-        #000 92%,
-        transparent
-      );
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 8%,
-        #000 92%,
-        transparent
-      );
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
+    .tracks-viewport {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      width: calc(var(--tracks-visible) * var(--track-card-w) + (var(--tracks-visible) - 1) * var(--track-gap));
+      max-width: 100%;
+    }
 
     .tracks-carousel-track {
       display: flex;
-      gap: 30px;
-      padding-right: 30px;
+      gap: var(--track-gap);
       width: max-content;
-      animation: tracks-scroll 42s linear infinite;
       will-change: transform;
     }
 
-
-    .tracks-carousel:hover .tracks-carousel-track {
-      animation-play-state: paused;
+    .tracks-carousel.is-floating .tracks-carousel-track {
+      transition: none;
     }
 
-
-    @keyframes tracks-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+    .tracks-carousel.is-static .tracks-carousel-track {
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
+    .tracks-nav {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(186, 121, 214, 0.45);
+      background: rgba(18, 10, 28, 0.72);
+      color: #fae6ff;
+      font-size: 1.55rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(186, 121, 214, 0.25);
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+    }
+
+    .tracks-nav:hover,
+    .tracks-nav:focus-visible {
+      border-color: rgba(157, 220, 255, 0.7);
+      background: rgba(40, 22, 55, 0.9);
+      box-shadow: 0 0 22px rgba(157, 220, 255, 0.28);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    .tracks-nav:disabled {
+      opacity: 0.35;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
 
     .tracks-carousel .track-card {
-      flex: 0 0 310px;
-      min-width: 310px;
+      flex: 0 0 var(--track-card-w);
+      width: var(--track-card-w);
+      min-width: var(--track-card-w);
+      min-height: 280px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(157, 220, 255, 0.1);
       border-radius: 16px;
@@ -610,18 +639,18 @@
       align-items: center;
       justify-content: center;
       transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+      box-sizing: border-box;
     }
+
     .track-card > :last-child {
       margin-bottom: 0;
     }
-
 
     .tracks-carousel .track-card:hover {
       transform: translateY(-8px) scale(1.02);
       border-color: rgba(186, 121, 214, 0.4);
       box-shadow: 0 10px 30px rgba(186, 121, 214, 0.15);
     }
-
 
     .track-icon { font-size: 2.4rem; margin-bottom: 12px; display: inline-block; }
     .track-card h3 {
@@ -668,29 +697,46 @@
       margin: 0;
     }
 
+    @media (max-width: 980px) {
+      .tracks-carousel {
+        --track-card-w: 260px;
+        --track-gap: 22px;
+        width: min(100%, calc(var(--tracks-visible) * var(--track-card-w) + (var(--tracks-visible) - 1) * var(--track-gap) + 100px));
+      }
+
+      .tracks-carousel .track-card {
+        min-height: 260px;
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .tracks-carousel {
+        --tracks-visible: 1;
+        --track-card-w: min(78vw, 300px);
+        width: 100%;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .tracks-nav {
+        width: 38px;
+        height: 38px;
+        font-size: 1.35rem;
+      }
+
+      .tracks-carousel .track-card {
+        min-height: 240px;
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      .tracks-carousel-track {
-        animation: none;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 40px;
+      .tracks-carousel.is-static .tracks-carousel-track {
+        transition: none;
       }
 
-
-      .tracks-carousel {
-        mask-image: none;
-        -webkit-mask-image: none;
-        width: 100%;
-        margin-left: 0;
-      }
-
-
-      .tracks-carousel .track-card[aria-hidden="true"] {
-        display: none;
+      .tracks-carousel .track-card:hover {
+        transform: none;
       }
     }
 
@@ -1791,12 +1837,6 @@
         letter-spacing: 2px;
       }
 
-      .tracks-carousel .track-card {
-        flex: 0 0 260px;
-        min-width: 260px;
-        padding: 24px 20px;
-      }
-
       .team-orb-caption {
         max-width: min(180px, 44vw);
       }
@@ -1946,118 +1986,39 @@
   <section id="tracks">
     <div class="section-container">
       <h2 class="section-title">Project Tracks</h2>
-    </div>
-    <div class="tracks-carousel">
-      <div class="tracks-carousel-track">
-        <!-- Main Track Cards -->
-        <div class="track-card">
-          <span class="track-icon">🌿</span>
-          <h3>Many Paths, One Grove</h3>
-          <span class="track-badge track-badge--diversity">Diversity</span>
-          <p>For teams where more than 50% of members are women or non-binary, bringing a wider range of perspectives.</p>
+      <div class="tracks-carousel is-floating" id="tracks-carousel" aria-roledescription="carousel" aria-label="Project tracks">
+        <button type="button" class="tracks-nav tracks-nav--prev" id="tracks-prev" aria-label="Previous tracks">‹</button>
+        <div class="tracks-viewport">
+          <div class="tracks-carousel-track" id="tracks-track">
+            <div class="track-card">
+              <span class="track-icon">🌿</span>
+              <h3>Many Paths, One Grove</h3>
+              <span class="track-badge track-badge--diversity">Diversity</span>
+              <p>For teams where more than 50% of members are women or non-binary, bringing a wider range of perspectives.</p>
+            </div>
+            <div class="track-card">
+              <span class="track-icon">🌱</span>
+              <h3>Sprouting Seeds</h3>
+              <span class="track-badge track-badge--beginner">Beginner</span>
+              <p>For teams with more than half their members new to hacking, taking their first steps into the Grove.</p>
+            </div>
+            <div class="track-card">
+              <span class="track-icon">✨</span>
+              <h3>Whimsical Wonders</h3>
+              <span class="track-badge track-badge--theme">On-Theme</span>
+              <p>For the project that best captures the spirit of the theme (Enchanted Grove), through storytelling, games, art, or interactive experiences.</p>
+            </div>
+            <div class="track-card">
+              <span class="track-icon">🔮</span>
+              <h3>Coming Soon</h3>
+            </div>
+            <div class="track-card">
+              <span class="track-icon">🦋</span>
+              <h3>Coming Soon</h3>
+            </div>
+          </div>
         </div>
-        <div class="track-card">
-          <span class="track-icon">🌱</span>
-          <h3>Sprouting Seeds</h3>
-          <span class="track-badge track-badge--beginner">Beginner</span>
-          <p>For teams with more than half their members new to hacking, taking their first steps into the Grove.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-icon">✨</span>
-          <h3>Whimsical Wonders</h3>
-          <span class="track-badge track-badge--theme">On-Theme</span>
-          <p>For the project that best captures the spirit of the theme (Enchanted Grove), through storytelling, games, art, or interactive experiences.</p>
-        </div>
-        <div class="track-card">
-          <span class="track-icon">🔮</span>
-          <h3>Coming Soon</h3>
-        </div>
-        <div class="track-card">
-          <span class="track-icon">🦋</span>
-          <h3>Coming Soon</h3>
-        </div>
-
-        <!-- Repeated for seamless loop (hidden in reduced motion & from screen readers) -->
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌿</span>
-          <h3>Many Paths, One Grove</h3>
-          <span class="track-badge track-badge--diversity">Diversity</span>
-          <p>For teams where more than 50% of members are women or non-binary, bringing a wider range of perspectives.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌱</span>
-          <h3>Sprouting Seeds</h3>
-          <span class="track-badge track-badge--beginner">Beginner</span>
-          <p>For teams with more than half their members new to hacking, taking their first steps into the Grove.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">✨</span>
-          <h3>Whimsical Wonders</h3>
-          <span class="track-badge track-badge--theme">On-Theme</span>
-          <p>For the project that best captures the spirit of the theme (Enchanted Grove), through storytelling, games, art, or interactive experiences.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🔮</span>
-          <h3>Coming Soon</h3>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🦋</span>
-          <h3>Coming Soon</h3>
-        </div>
-
-        <!-- Second Half for Seamless Infinite Animation -->
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌿</span>
-          <h3>Many Paths, One Grove</h3>
-          <span class="track-badge track-badge--diversity">Diversity</span>
-          <p>For teams where more than 50% of members are women or non-binary, bringing a wider range of perspectives.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌱</span>
-          <h3>Sprouting Seeds</h3>
-          <span class="track-badge track-badge--beginner">Beginner</span>
-          <p>For teams with more than half their members new to hacking, taking their first steps into the Grove.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">✨</span>
-          <h3>Whimsical Wonders</h3>
-          <span class="track-badge track-badge--theme">On-Theme</span>
-          <p>For the project that best captures the spirit of the theme (Enchanted Grove), through storytelling, games, art, or interactive experiences.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🔮</span>
-          <h3>Coming Soon</h3>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🦋</span>
-          <h3>Coming Soon</h3>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌿</span>
-          <h3>Many Paths, One Grove</h3>
-          <span class="track-badge track-badge--diversity">Diversity</span>
-          <p>For teams where more than 50% of members are women or non-binary, bringing a wider range of perspectives.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🌱</span>
-          <h3>Sprouting Seeds</h3>
-          <span class="track-badge track-badge--beginner">Beginner</span>
-          <p>For teams with more than half their members new to hacking, taking their first steps into the Grove.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">✨</span>
-          <h3>Whimsical Wonders</h3>
-          <span class="track-badge track-badge--theme">On-Theme</span>
-          <p>For the project that best captures the spirit of the theme (Enchanted Grove), through storytelling, games, art, or interactive experiences.</p>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🔮</span>
-          <h3>Coming Soon</h3>
-        </div>
-        <div class="track-card" aria-hidden="true">
-          <span class="track-icon">🦋</span>
-          <h3>Coming Soon</h3>
-        </div>
+        <button type="button" class="tracks-nav tracks-nav--next" id="tracks-next" aria-label="Next tracks">›</button>
       </div>
     </div>
   </section>
@@ -2935,12 +2896,232 @@
     }
 
 
+    function initTracksCarousel() {
+      const carousel = document.getElementById('tracks-carousel');
+      const track = document.getElementById('tracks-track');
+      const prevBtn = document.getElementById('tracks-prev');
+      const nextBtn = document.getElementById('tracks-next');
+      if (!carousel || !track || !prevBtn || !nextBtn) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const FLOAT_SPEED = 24; // px per second
+      let mode = reduceMotion ? 'static' : 'floating';
+      let index = 0;
+      let total = 0;
+      let offset = 0;
+      let isJumping = false;
+      let isHovering = false;
+      let rafId = null;
+      let lastTs = 0;
+
+      function getStep() {
+        const firstCard = track.querySelector('.track-card');
+        if (!firstCard) return 0;
+        const styles = getComputedStyle(carousel);
+        const gap = parseFloat(styles.getPropertyValue('--track-gap')) || 28;
+        return firstCard.getBoundingClientRect().width + gap;
+      }
+
+      function loopWidth() {
+        return total * getStep();
+      }
+
+      function normalizeOffset(value) {
+        const width = loopWidth();
+        if (width <= 0) return 0;
+        value %= width;
+        if (value < 0) value += width;
+        return value;
+      }
+
+      function applyOffset(withTransition) {
+        if (!withTransition) {
+          track.style.transition = 'none';
+        } else {
+          track.style.transition = '';
+        }
+        track.style.transform = `translateX(${-offset}px)`;
+        if (!withTransition) {
+          void track.offsetWidth;
+          track.style.transition = '';
+        }
+      }
+
+      function clearClones() {
+        track.querySelectorAll('.track-card[data-clone="true"]').forEach((node) => node.remove());
+      }
+
+      function getOriginals() {
+        return Array.from(track.querySelectorAll('.track-card:not([data-clone="true"])'));
+      }
+
+      function appendClones() {
+        clearClones();
+        const originals = getOriginals();
+        total = originals.length;
+        originals.forEach((card) => {
+          const clone = card.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          clone.dataset.clone = 'true';
+          track.appendChild(clone);
+        });
+      }
+
+      function stopFloat() {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        lastTs = 0;
+      }
+
+      function floatTick(ts) {
+        if (mode !== 'floating') {
+          rafId = null;
+          return;
+        }
+        if (!lastTs) lastTs = ts;
+        const delta = (ts - lastTs) / 1000;
+        lastTs = ts;
+
+        if (!isHovering) {
+          offset = normalizeOffset(offset + FLOAT_SPEED * delta);
+          track.style.transform = `translateX(${-offset}px)`;
+        }
+
+        rafId = requestAnimationFrame(floatTick);
+      }
+
+      function startFloat() {
+        stopFloat();
+        carousel.classList.add('is-floating');
+        carousel.classList.remove('is-static');
+        mode = 'floating';
+        isJumping = false;
+        track.style.transition = 'none';
+        applyOffset(false);
+        rafId = requestAnimationFrame(floatTick);
+      }
+
+      function prepareFloating(fromCurrent = false) {
+        appendClones();
+        if (!fromCurrent) {
+          offset = 0;
+          index = 0;
+        } else {
+          offset = normalizeOffset(offset);
+          index = Math.round(offset / getStep()) % Math.max(total, 1);
+        }
+        startFloat();
+      }
+
+      function enterStaticFromCurrent() {
+        stopFloat();
+        carousel.classList.remove('is-floating');
+        carousel.classList.add('is-static');
+        appendClones();
+        mode = 'static';
+        isJumping = false;
+
+        const step = getStep();
+        if (step > 0) {
+          index = Math.round(offset / step);
+          // Keep index in [0, total] range; total is valid (clone start = visual start)
+          if (index >= total) index = 0;
+          if (index < 0) index = total - 1;
+          offset = index * step;
+        } else {
+          index = 0;
+          offset = 0;
+        }
+        applyOffset(false);
+      }
+
+      function goToIndex(nextIndex, withTransition) {
+        if (total <= 0) return;
+        index = nextIndex;
+        offset = index * getStep();
+        applyOffset(withTransition);
+      }
+
+      function handleNav(direction) {
+        if (mode === 'floating') {
+          enterStaticFromCurrent();
+          if (direction === 0) return;
+          requestAnimationFrame(() => handleNav(direction));
+          return;
+        }
+
+        if (isJumping || total <= 0) return;
+
+        if (direction < 0 && index === 0) {
+          isJumping = true;
+          goToIndex(total, false);
+          isJumping = false;
+          requestAnimationFrame(() => goToIndex(total - 1, true));
+          return;
+        }
+
+        goToIndex(index + direction, true);
+      }
+
+      track.addEventListener('transitionend', (event) => {
+        if (mode !== 'static' || event.target !== track || event.propertyName !== 'transform') return;
+        if (total <= 0) return;
+
+        if (index >= total) {
+          isJumping = true;
+          goToIndex(index - total, false);
+          isJumping = false;
+        } else if (index < 0) {
+          isJumping = true;
+          goToIndex(index + total, false);
+          isJumping = false;
+        }
+      });
+
+      prevBtn.addEventListener('click', () => handleNav(-1));
+      nextBtn.addEventListener('click', () => handleNav(1));
+
+      carousel.addEventListener('mouseenter', () => {
+        isHovering = true;
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isHovering = false;
+        if (reduceMotion) return;
+        if (mode === 'static') {
+          // Resume auto-scroll from wherever the user left off
+          offset = normalizeOffset(index * getStep());
+          prepareFloating(true);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (mode === 'static') {
+          offset = index * getStep();
+          applyOffset(false);
+        } else {
+          offset = normalizeOffset(offset);
+          applyOffset(false);
+        }
+      });
+
+      if (reduceMotion) {
+        appendClones();
+        enterStaticFromCurrent();
+      } else {
+        prepareFloating(false);
+      }
+    }
+
     window.addEventListener('load', () => {
       initMlhBadge();
       initFlowerReveal();
       initSectionTitleGlow();
       initTeamGrid();
       initButterfly();
+      initTracksCarousel();
       ScrollTrigger.refresh();
     });
   </script>
